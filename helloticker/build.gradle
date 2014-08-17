@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.+'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+    defaultConfig {
+        applicationId "com.example.irock.helloticker.wear"
+        minSdkVersion 20
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+    sourceSets {
+        main {
+            manifest {
+                srcFile '/Users/iRock/AndroidStudioProjects/helloticker/wear/src/main/AndroidManifest.xml'
+            }
+            java {
+                srcDir '/Users/iRock/AndroidStudioProjects/helloticker/wear/src'
+            }
+            res {
+                srcDir '/Users/iRock/AndroidStudioProjects/helloticker/wear/src/main/res'
+            }
+            assets {
+                srcDir 'assets'
+            }
+            resources {
+                srcDir '/Users/iRock/AndroidStudioProjects/helloticker/wear/src'
+            }
+            aidl {
+                srcDir 'src'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.support:wearable:+'
+    compile 'com.google.android.gms:play-services-wearable:+'
+}
